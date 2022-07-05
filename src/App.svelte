@@ -2,6 +2,7 @@
   import { Router, Link, Route } from "svelte-navigator";
 
   import HomePage from "./pages/home/home.svelte";
+  import OverviewByGenre from "./pages/overviewByGenre/index.svelte"
 
 </script>
 
@@ -15,6 +16,7 @@
 		<Route path="/">
 			<HomePage />
 		</Route>
+    <Route path="movies/:genre" component={OverviewByGenre} />
 	</div>
 </Router>
 

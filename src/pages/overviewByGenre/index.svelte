@@ -1,10 +1,11 @@
 <script>
+    let url_string = window.location.pathname;
+    let genre = url_string.split("movies/")[1]
+
     import { onMount } from "svelte";
-    import { Link } from "svelte-navigator";
-    import Showcase from "../shared/showcase.svelte";
+    import Showcase from "../../components/shared/showcase.svelte";
 
     // action movies
-    export let genre;
     export let movies = [];
     let count;
 
@@ -15,7 +16,8 @@
         .then(response => response.json())
         .then(result => {
             count = result.entries.length;
-            movies = result.entries.slice(0,4);
+            movies = result.entries;
+            //console.log(movies)
             movies.forEach(movie => {
                 if(typeof movie.plprogram$thumbnails["orig-365x251"] === "undefined") {
                     movie.plprogram$thumbnails["orig-365x251"] = "https://prod.cdn.bbaws.net/TDC_Blockbuster_-_Production/505/1012/4280009392-po-reg-appletv_orig-1641373999314.jpg";
@@ -27,16 +29,18 @@
 	});
 </script>
 
-<div class="row">
-    <div class="d-flex align-items-center">
-        <h2>{genre} Movies ({count})</h2> <p class="categoryLink"><Link to="/movies/{genre}">Explore more</Link></p>
-    </div>
-    <div class="showcaseWrapper">
-        {#each movies as movie}
-            <Showcase url={movie.id.split("ProgramAvailability/")[1]} title={movie.title} imgSrc={movie.plprogram$thumbnails["orig-365x251"].plprogram$url} />
-        {/each}
+<div class="container">
+    <h1>{genre} ({count})</h1>
+    <div class="row">
+        <div class="showcaseWrapper">
+            {#each movies as movie}
+                <Showcase url={movie.id.split("ProgramAvailability/")[1]} title={movie.title} imgSrc={movie.plprogram$thumbnails["orig-365x251"].plprogram$url || movie.plprogram$thumbnails["orig-365x251"]} />
+            {/each}
+        </div>
     </div>
 </div>
+
+
 
 <style>
 .showcaseWrapper {
@@ -44,21 +48,5 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-row-gap: 1rem;
     grid-column-gap: 1rem;
-}
-
-h2 {
-    margin-bottom: 1rem;
-}
-
-.categoryLink {
-    font-size: 1.5rem;
-    margin-left: 1rem;
-    color: blue;
-}
-
-.row {
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #bbbbbb;
 }
 </style>
