@@ -17,7 +17,6 @@
         .then(result => {
             count = result.entries.length;
             movies = result.entries;
-            //console.log(movies)
             movies.forEach(movie => {
                 if(typeof movie.plprogram$thumbnails["orig-365x251"] === "undefined") {
                     movie.plprogram$thumbnails["orig-365x251"] = "https://prod.cdn.bbaws.net/TDC_Blockbuster_-_Production/505/1012/4280009392-po-reg-appletv_orig-1641373999314.jpg";
@@ -46,7 +45,23 @@
 .showcaseWrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-row-gap: 1rem;
+    grid-row-gap: 2rem;
     grid-column-gap: 1rem;
+}
+
+h1 {
+    margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width: 991px) {
+    .showcaseWrapper {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .showcaseWrapper {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 </style>

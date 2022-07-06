@@ -131,4 +131,27 @@
         padding-bottom: 0.5rem;
     }
 
+    @media screen and (max-width: 991px) {
+        .crewWrapper {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .movie {
+            display:grid;
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .crewWrapper {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .movie {
+            display:grid;
+            grid-template-columns: 1fr;
+        }
+    }
+    
+
 </style>

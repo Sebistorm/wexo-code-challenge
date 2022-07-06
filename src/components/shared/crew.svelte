@@ -28,6 +28,7 @@ h3 {
     font-size: 1.2rem;
     margin-top: 0.2rem;
     margin-bottom: 0px;
+    text-align: center;
 }
 
 h4 {

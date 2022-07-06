@@ -28,12 +28,12 @@
 </script>
 
 <div class="row">
-    <div class="d-flex align-items-center">
+    <div class="headerWrapper d-flex align-items-center">
         <h2>{genre} Movies ({count})</h2> <p class="categoryLink"><Link to="/movies/{genre}">Explore more</Link></p>
     </div>
     <div class="showcaseWrapper">
         {#each movies as movie}
-            <Showcase url={movie.id.split("ProgramAvailability/")[1]} title={movie.title} imgSrc={movie.plprogram$thumbnails["orig-365x251"].plprogram$url} />
+            <Showcase url={movie.id.split("ProgramAvailability/")[1]} title={movie.title} imgSrc={movie.plprogram$thumbnails["orig-365x251"].plprogram$url || movie.plprogram$thumbnails["orig-365x251"]} />
         {/each}
     </div>
 </div>
@@ -42,12 +42,12 @@
 .showcaseWrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-row-gap: 1rem;
+    grid-row-gap: 2rem;
     grid-column-gap: 1rem;
 }
 
 h2 {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .categoryLink {
@@ -61,4 +61,21 @@ h2 {
     padding-bottom: 1rem;
     border-bottom: 1px solid #bbbbbb;
 }
+
+@media screen and (max-width: 600px) {
+    .showcaseWrapper {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .headerWrapper {
+        flex-direction: column;
+    }
+
+    h2 {
+        margin-bottom: .5rem;
+    }
+}
+
 </style>

@@ -21,7 +21,27 @@
 .showcaseWrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-row-gap: 1rem;
+    grid-row-gap: 2rem;
     grid-column-gap: 1rem;
+}
+
+.container {
+    min-height: calc(100vh - 16.2rem);
+}
+
+h1 {
+    margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width: 991px) {
+    .showcaseWrapper {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .showcaseWrapper {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 </style>

@@ -10,9 +10,10 @@
 
 <Router>
 	<nav>
-		<Link to="/">Home</Link>
-		<Link to="/wishlist">Wishlist</Link>
-		<Link to="blog">Blog</Link>
+    <div class="container">
+      <Link to="/">Home</Link>
+      <Link to="/wishlist">Wishlist</Link>
+    </div>
 	</nav>
 	<div>
 		<Route path="/">
@@ -26,6 +27,12 @@
     <Route path="movie/:id" component={MoviePage} />
 	</div>
 </Router>
+
+<footer>
+  <div class="container">
+    <h2>Footer</h2>
+  </div>
+</footer>
 
 
 <style>
@@ -47,6 +54,33 @@
 
   :global(.crew):nth-child(2n) {
     background-color: #cacaca;
+  }
+
+  nav {
+    background-color: #202429;
+    color: white;
+    padding: 1.3rem 0px;
+    margin-bottom: 2rem;
+  }
+
+  :global(nav a) {
+    padding: 0px 1rem;
+    font-size: 1.1rem;
+  }
+
+  :global(nav a):hover {
+    color: #ffb836;
+  }
+
+  :global(nav a):first-of-type {
+    padding: 0px 1rem 0px 0px;
+  }
+
+  footer {
+    background-color: #202429;
+    color: white;
+    padding: 1.5rem 0px;
+    margin-top: 4rem;
   }
  
 </style>

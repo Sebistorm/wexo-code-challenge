@@ -35,5 +35,9 @@ img {
     width: 100%;
     height: auto;
 }
+
+button {
+    width: 100%;
+}
 </style>
 
